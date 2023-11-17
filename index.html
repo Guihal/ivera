@@ -1,6 +1,45 @@
 <!DOCTYPE html>
 <html>
-    <div class="cookies__container">
+    <div class="register__con">
+        <div class="register__con-in">
+            <div class="register__title">
+            Для дальнейшей регистрации выберите тип клиента.
+            </div>
+            <div class="register__wrapper">
+                <a href="http://iveracollection.by/my-account/"  class="register__item">
+                    <div class="register__ramka">
+                        <div class="register__ramka__in">
+                            <div class="register__ramka__text">
+                                Розничный клиент
+                            </div>
+                            <button class="register__ramka__btn">
+                                Выбрать
+                            </button>
+                        </div>
+                    </div>
+                    <div class="register__img-con">
+                        <img src="http://iveracollection.com/wp-content/uploads/2023/07/2Street-Style-2048x1363-1.jpg" alt="Красивая девушка" class="register__img" loading="lazy">
+                    </div>
+                </a>
+                <a class="register__item">
+                    <div href="http://iveracollection.com/my-account/" class="register__ramka">
+                        <div class="register__ramka__in">
+                            <div class="register__ramka__text">
+                                Оптовый клиент
+                            </div>
+                            <button class="register__ramka__btn">
+                                Выбрать
+                            </button>
+                        </div>
+                    </div>
+                    <div class="register__img-con">
+                        <img src="http://iveracollection.com/wp-content/uploads/2023/07/2Street-Style-2048x1363-1.jpg" alt="Красивая девушка" class="register__img" loading="lazy">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+	<div class="cookies__container">
         <div class="cookies__text">
             Наш сайт использует куки, нажимая на кнопку вы соглашаетесь на обработку пеосональных данных в соответствии с <a href="" class="coockies__text">политикой конфиденциальности.</a>
         </div>
@@ -9,39 +48,140 @@
         </button>
     </div>
     <style>
-        .cookies__container{
-            background: #fff;
-            padding: 20px;
+
+        
+
+        .register__ramka{
+            border: 3px solid transparent;
             position: absolute;
-            max-width: 400px;
+            top: 10px;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            height: calc(100% - 20px);
+            width: calc(100% - 20px);
+            box-sizing: border-box;
+        }
+
+        .register__item:hover .register__ramka{
+            border: 3px solid #fff;
+            
+        }
+
+        .register__img-con{
+            height: 100%;
+            width: 100%;
+        }
+
+        .register__img-con img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .register__item{
+            height: 100%;
+            width: 100%;
+            position: relative;
+            background: #fff;
+        }
+
+        .register__ramka__in{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            gap: 40px;
+        }
+
+
+        .register__title{
+            text-align: center;
+            line-height: 54px;
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        .register__ramka__text{
+            color: #ffffff;
+            font-size: 25px;
+            line-height: 30px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+
+        .register__con-in{
+            background: #fff;
+            max-width: 1220px;
+            padding: 40px;
+            box-sizing: border-box;
+            margin: 0 auto;
+        }
+
+        .register__wrapper{
+            display: flex;
+            gap: 40px;
+        }
+
+        .register__con{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            z-index: 389;
             display: none;
             opacity: 0;
             transition: all 0.3s;
         }
 
-        .cookies__text{
-            margin-bottom: 10px;
+        .cookies__container{
+                justify-content: space-between;
+				background: #fff;
+				padding: 20px;
+				position: fixed;
+				align-items: center;
+				bottom: 0;
+				right: 0;
+				max-width: 100%;
+				width: 100%;
+				display: none;
+				opacity: 0;
+				transition: all 0.3s;
+				z-index: 500;
+				gap: 20px;
         }
 
-        .cookies__btn{
-            color: black;
-            font-weight: 400;
-            border: 1px;
-            border-color: #000000;
-            border-style: solid;
-            width: auto;
-            padding: 10px 30px 10px 30px;
-            scroll-behavior: smooth;
+        .cookies__btn, .register__ramka__btn{
+                color: black;
+				font-weight: 400;
+				border: 1px;
+				border-color: #000000;
+				border-style: solid;
+				width: auto;
+				padding: 10px;
+				height: fit-content;
+				height: -webkit-fit-content;
+				scroll-behavior: smooth;
         }
+		
+		@media screen and (max-width: 476px){
+			.cookies__container{
+				flex-direction: column;
+			}
+		}
     </style>
     <script>
-        console.log("hello");
+        
         document.addEventListener("DOMContentLoaded", (event) => {
-            if(localStorage.getItem("cookies") != true){
+            if(!localStorage.getItem("cookies")){
                 const cookiesBtn = document.querySelector(".cookies__container .cookies__btn");
                 const cookiesCon = document.querySelector(".cookies__container");
                 if(cookiesCon && cookiesBtn){
-                    cookiesCon.style.display = "block";
+                    cookiesCon.style.display = "flex";
                     setTimeout(() => {
                         cookiesCon.style.opacity = "1";
                     }, 50);
@@ -55,6 +195,22 @@
                 }
 
             }
+            
+            const accBtn = document.querySelector(".wd-header-my-account");
+            const regCon = document.querySelector(".register__con");
+            const body = document.querySelector("body");
+            if(accBtn && regCon && body){
+                if(!body.classList.contains("logged-in")){
+                    accBtn.addEventListener("click", (event) => {
+                        event.preventDefault();
+                        regCon.style.display = "block";
+                        setTimeout(() => {
+                            regCon.style.opacity = "1";
+                        }, 50);
+                    })
+                }
+            }
+
         });
     </script>
 </html>
