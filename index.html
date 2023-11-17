@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <div class="cookies__container">
+        <div class="cookies__text">
+            Наш сайт использует куки, нажимая на кнопку вы соглашаетесь на обработку пеосональных данных в соответствии с <a href="" class="coockies__text">политикой конфиденциальности.</a>
+        </div>
+        <button class="cookies__btn">
+            Согласен
+        </button>
+    </div>
+    <style>
+        .cookies__container{
+            background: #fff;
+            padding: 20px;
+            position: absolute;
+            max-width: 400px;
+            display: none;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        .cookies__text{
+            margin-bottom: 10px;
+        }
+
+        .cookies__btn{
+            color: black;
+            font-weight: 400;
+            border: 1px;
+            border-color: #000000;
+            border-style: solid;
+            width: auto;
+            padding: 10px 30px 10px 30px;
+            scroll-behavior: smooth;
+        }
+    </style>
+    <script>
+        console.log("hello");
+        document.addEventListener("DOMContentLoaded", (event) => {
+            if(localStorage.getItem("cookies") != true){
+                const cookiesBtn = document.querySelector(".cookies__container .cookies__btn");
+                const cookiesCon = document.querySelector(".cookies__container");
+                if(cookiesCon && cookiesBtn){
+                    cookiesCon.style.display = "block";
+                    setTimeout(() => {
+                        cookiesCon.style.opacity = "1";
+                    }, 50);
+                    cookiesBtn.addEventListener("click", (event) => {
+                        localStorage.setItem("cookies", true);
+                        cookiesCon.style.opacity = "0";
+                        setTimeout(() => {
+                            cookiesCon.style.display = "none";
+                        }, 300);
+                    });
+                }
+
+            }
+        });
+    </script>
+</html>
